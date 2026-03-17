@@ -11,17 +11,19 @@
       --button-background: #eaeaea;
       --button-hover-background: #eec6e3;
       --button-border-color: #a5aff9;
+      --topbar-background: #7b7bd9;
     }
-
+    
     @media (prefers-color-scheme: dark) {
-      :root {
+        :root {
         --background-color: #081925;
         --text-color: #ffffff;
         --card-border-color: #a5aff9;
-        --card-background: #a5aff9;
-        --button-background: #0d2231;
+        --card-background: #0e1235;
+        --button-background: #041521;
         --button-hover-background: #0a2d46;
         --button-border-color: #a5aff9;
+        --topbar-background: #262646;
       }
     }
 
@@ -42,6 +44,14 @@
       min-height: 50dvh; 
       padding: 2rem;
       gap: 20px;
+    }
+    
+    /* Barre du haut (onglets) */
+
+    .topbar {
+        background-color: var(--topbar-background);
+        padding: 1rem;
+        margin-bottom: 30px;
     }
 
     /* CARD STYLES */
