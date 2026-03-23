@@ -331,3 +331,5 @@ export const quizQuestions = [
     explanation: "Un pentest simule une attaque pour détecter les failles.",
   },
 ];
+
+export default quizQuestions;

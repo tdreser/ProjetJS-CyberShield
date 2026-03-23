@@ -1,17 +1,61 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CyberShield</title>
-  <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../quiz.css" />
   </head>
   <body>
-      <section class="topbar">
-          <button>Dashboard</button> <button>Analyseur mdp</button> <button>Phishing detector</button> <button>Quiz</button> <button>Cripto message</button>
-      </section>
-      <h1>Quiz interactif de sensibilisation</h1>
-      <main class="container">
-      </main>
+    <section class="topbar">
+      <button>Dashboard</button> <button>Analyseur mdp</button>
+      <button>Phishing detector</button> <button>Quiz</button>
+      <button>Cripto message</button>
+    </section>
+    <h1>Quiz interactif de sensibilisation</h1>
+    <main class="container">
+      <div class="game" id="game">
+        <form action="#" id="endForm">
+          <button type="submit">Quitter</button>
+        </form>
+      </div>
+      <div class="welcome-quiz" id="welcome-quiz">
+        <form action="#" id="startForm">
+          <fieldset>
+            <legend>Sélectionnez une difficulté&nbsp;:</legend>
+
+            <div>
+              <input
+                type="radio"
+                id="easy"
+                name="difficulty"
+                value="easy"
+                checked
+              />
+              <label for="easy">Easy</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="medium"
+                name="difficulty"
+                value="medium"
+              />
+              <label for="medium">Medium</label>
+            </div>
+
+            <div>
+              <input type="radio" id="hard" name="difficulty" value="hard" />
+              <label for="hard">Hard</label>
+            </div>
+          </fieldset>
+
+          <button type="submit">Commencer le quiz</button>
+        </form>
+      </div>
+    </main>
   </body>
+  <script type="module" src="../js/quiz.js"></script>
 </html>
