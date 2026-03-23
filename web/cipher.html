@@ -1,17 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CyberShield</title>
+    <title>Chiffrement Cesar - CyberShield</title>
   <link rel="stylesheet" href="../style.css">
   </head>
   <body>
       <section class="topbar">
-          <button>Dashboard</button> <button>Analyseur mdp</button> <button>Phishing detector</button> <button>Quiz</button> <button>Cripto message</button>
+          <a class="go-link" href="../index.html">Dashboard</a>
       </section>
       <h1>Cryptographie des messages</h1>
       <main class="container">
+        <section class="cipher-panel">
+          <h3>Chiffrement Cesar</h3>
+
+          <label class="cipher-label" for="caesarMessage">Message</label>
+          <textarea id="caesarMessage" rows="4" class="cipher-input"></textarea>
+
+          <label class="cipher-label" for="caesarShift">Decalage (1-25)</label>
+          <input id="caesarShift" type="number" min="1" max="25" value="3" class="cipher-number-input">
+
+          <div class="cipher-actions">
+            <button id="caesarEncryptBtn" type="button">Chiffrer</button>
+            <button id="caesarDecryptBtn" type="button">Dechiffrer</button>
+            <button id="caesarBruteForceBtn" type="button">Force brute</button>
+          </div>
+
+          <p class="cipher-label">Resultat</p>
+          <pre id="caesarResult" class="cipher-result"></pre>
+
+          <h3>25 tentatives de dechiffrement</h3>
+          <div class="cipher-table-wrap">
+            <table class="cipher-table">
+            <thead>
+              <tr>
+                <th>Decalage</th>
+                <th>Texte</th>
+              </tr>
+            </thead>
+            <tbody id="caesarBruteForceBody"></tbody>
+          </table>
+          </div>
+        </section>
       </main>
+      <script src="../js/password.js"></script>
   </body>
 </html>

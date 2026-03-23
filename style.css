@@ -131,9 +131,9 @@
 
             /* CSS */
 .score-bar {
-  width: 100%;
-  max-width: 320px;
-  height: 14px;
+  width: 120%;
+  max-width: 600px;
+  height: 20px;
   background: #d9d9d9;
   border-radius: 999px;
   overflow: hidden;
@@ -145,3 +145,185 @@
   background: #d44; /* rouge par défaut */
   transition: width 0.25s ease, background-color 0.25s ease;
 }
+
+#passwordInput {
+  width: min(100%, 460px);
+  padding: 0.9rem 1rem;
+  border: 2px solid #8fd7d0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ecfffd 0%, #dffbf8 100%);
+  color: #113836;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  outline: none;
+  box-shadow: 0 8px 20px rgba(17, 56, 54, 0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+#passwordInput::placeholder {
+  color: #4b8a85;
+  font-weight: 500;
+}
+
+#passwordInput:hover {
+  border-color: #62c7be;
+}
+
+#passwordInput:focus {
+  border-color: #2ea79d;
+  box-shadow: 0 0 0 4px rgba(46, 167, 157, 0.22), 0 10px 24px rgba(17, 56, 54, 0.18);
+  transform: translateY(-1px);
+}
+
+.password-input-wrap {
+  width: min(100%, 460px);
+  position: relative;
+}
+
+.password-input-wrap #passwordInput {
+  width: 100%;
+  padding-right: 2.8rem;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #2f6d68;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.eye-toggle:hover {
+  background: rgba(47, 109, 104, 0.2);
+  color: #1f5652;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 0 0 3px rgba(47, 109, 104, 0.16);
+}
+
+.eye-toggle:focus-visible {
+  outline: none;
+  background: rgba(47, 109, 104, 0.2);
+  box-shadow: 0 0 0 3px rgba(47, 109, 104, 0.28);
+}
+
+.cipher-panel {
+  width: min(900px, 100%);
+  border: 1px solid var(--card-border-color);
+  background: var(--card-background);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 14px 30px rgba(9, 51, 48, 0.14);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cipher-label {
+  margin: 0.4rem 0 0.1rem;
+  font-weight: 600;
+}
+
+.cipher-input,
+.cipher-number-input {
+  border: 1px solid #7ccfc7;
+  border-radius: 10px;
+  background: #e9fffc;
+  color: #103634;
+  padding: 0.7rem 0.8rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cipher-input:focus,
+.cipher-number-input:focus {
+  border-color: #23a89d;
+  box-shadow: 0 0 0 3px rgba(35, 168, 157, 0.2);
+}
+
+.cipher-number-input {
+  width: 130px;
+}
+
+.cipher-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.cipher-actions button,
+.go-link,
+button {
+  border: 1px solid #5fc0b8;
+  background: #dcfaf7;
+  color: #124542;
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.cipher-actions button:hover,
+.go-link:hover,
+button:hover {
+  background: #c9f3ee;
+  transform: translateY(-1px);
+}
+
+.cipher-result {
+  min-height: 52px;
+  margin: 0;
+  border: 1px solid #9adad4;
+  border-radius: 10px;
+  background: #f2fffd;
+  padding: 0.65rem 0.75rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.cipher-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cipher-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #effffd;
+  border: 1px solid #9adad4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cipher-table th,
+.cipher-table td {
+  border-bottom: 1px solid #b8e9e3;
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cipher-table th {
+  background: #d8f7f2;
+}
+
+@media (max-width: 640px) {
+  .cipher-panel {
+    padding: 1rem;
+  }
+
+  .cipher-number-input {
+    width: 100%;
+  }
+}
+
