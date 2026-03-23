@@ -128,3 +128,20 @@
                 padding: 1.5rem;
                 overflow: hidden;    /* rien ne sort visuellement */
             }
+
+            /* CSS */
+.score-bar {
+  width: 100%;
+  max-width: 320px;
+  height: 14px;
+  background: #d9d9d9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.score-fill {
+  width: 0%;
+  height: 100%;
+  background: #d44; /* rouge par défaut */
+  transition: width 0.25s ease, background-color 0.25s ease;
+}

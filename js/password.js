@@ -42,7 +42,12 @@ function analyzePassword(password) {
         if (char >= '0' && char <= '9') {
             resultchiffre += 1;
         }
-        if (char !== ' ' && !(char >= 'a' && char <= 'z')) {
+        if (
+            char !== ' ' &&
+            !(char >= 'a' && char <= 'z') &&
+            !(char >= 'A' && char <= 'Z') &&
+            !(char >= '0' && char <= '9')
+        ) {
             resultsymbole += 1;
         }
     }
@@ -68,4 +73,32 @@ function analyzePassword(password) {
     }
 
     return score;
+}
+
+
+// JS
+function updateScoreBar(score) {
+  const fill = document.getElementById("scoreFill");
+  const value = document.getElementById("scoreValue");
+
+    if (!fill || !value) return;
+
+  const safeScore = Math.max(0, Math.min(score, 100));
+  fill.style.width = safeScore + "%";
+  value.textContent = safeScore;
+
+  if (safeScore < 30) fill.style.backgroundColor = "#d44";      // faible
+  else if (safeScore < 60) fill.style.backgroundColor = "#e69a00"; // moyen
+  else if (safeScore < 85) fill.style.backgroundColor = "#74b816"; // bon
+  else fill.style.backgroundColor = "#2b8a3e";                    // excellent
+}
+
+const passwordInput = document.getElementById("passwordInput");
+
+if (passwordInput) {
+    passwordInput.addEventListener("input", (event) => {
+        const password = event.target.value;
+        const score = analyzePassword(password);
+        updateScoreBar(score);
+    });
 }
