@@ -121,3 +121,10 @@
               color: var(--paragraph-color); 
             }
     
+            .card {
+                width: 200px;
+                min-height: 200px;   /* au lieu de height fixe */
+                height: auto;
+                padding: 1.5rem;
+                overflow: hidden;    /* rien ne sort visuellement */
+            }
