@@ -36,6 +36,14 @@
       color: var(--text-color);
     }
 
+    /* Hyperlinks */
+
+    a {
+      text-decoration: none;
+    }
+
+
+
     /* Basic layout for the pages */
 
     .container { 
@@ -52,7 +60,13 @@
         background-color: var(--topbar-background);
         padding: 1rem;
         margin-bottom: 30px;
-    }
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+      }
 
     .topbar-button {
       border: 1px solid #5fc0b8;
@@ -62,6 +76,19 @@
       padding: 0.5rem 0.85rem;
       cursor: pointer;
       transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+
+    .topbar-button:hover {
+      transform: scale(1.05);
+    }
+
+    .topbar-button:active {
+      transform: scale(0.98);
+    }
+
+    .topbar-button {
+      text-decoration: none;
+      display: inline-block;
     }
 
     .selected-topbar-button {
