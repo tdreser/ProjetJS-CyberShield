@@ -263,10 +263,10 @@ function getRanking(playerScore) {
     const scores =
         JSON.parse(localStorage.getItem("quizScores")) || [];
 
-    scores.push({ score: playerScore });
+    const allScores = [...scores, { score: playerScore }];
 
     const sorted =
-        scores.sort((a, b) => b.score - a.score);
+        allScores.sort((a, b) => b.score - a.score);
 
     const rank =
         sorted.findIndex(s => s.score === playerScore) + 1;
@@ -280,31 +280,35 @@ function toggleGame() {
     const game = document.getElementById("game");
 
     welcome.style.display =
-        welcome.style.display === "none" ? "block" : "none";
+        welcome.style.display === "none" ? "flex" : "none";
 
     game.style.display =
-        game.style.display === "block" ? "none" : "block";
+        game.style.display === "flex" ? "none" : "flex";
 }
 
 const startForm = document.getElementById("startForm");
 const endForm = document.getElementById("endForm");
 
-startForm.addEventListener("submit", (event) => {
+if (startForm) {
+    startForm.addEventListener("submit", (event) => {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const formData = new FormData(event.target);
+        const formData = new FormData(event.target);
 
-    const difficulty = formData.get("difficulty");
+        const difficulty = formData.get("difficulty");
 
-    start(difficulty);
-});
+        start(difficulty);
+    });
+}
 
-endForm.addEventListener("submit", (event) => {
+if (endForm) {
+    endForm.addEventListener("submit", (event) => {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    clearInterval(timerInterval);
+        clearInterval(timerInterval);
 
-    toggleGame();
-});
+        toggleGame();
+    });
+}

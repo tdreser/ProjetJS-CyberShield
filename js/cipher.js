@@ -1,7 +1,7 @@
 function normalizeShift(shift) {
 	const parsed = Number(shift);
 	if (!Number.isInteger(parsed) || parsed < 1 || parsed > 25) {
-		throw new Error("Le decalage doit etre un entier entre 1 et 25.");
+		throw new Error("Le décalage doit être un entier entre 1 et 25.");
 	}
 	return parsed;
 }

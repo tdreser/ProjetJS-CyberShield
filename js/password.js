@@ -1,5 +1,5 @@
 // Liste noire des 20 mots de passe les plus courants
-const listenoire = [
+const listeNoire = [
     "123456",
     "password",
     "123456789",
@@ -8,7 +8,7 @@ const listenoire = [
     "12345678",
     "football",
     "admin",
-    "proword",
+    "password",
     "login",
     "azerty",
     "1234567",
@@ -66,7 +66,7 @@ function analyzePassword(password) {
         score += 20;
     }
 
-    if (!listenoire.includes(password.toLowerCase()) && password.length > 0) {
+    if (!listeNoire.includes(password.toLowerCase()) && password.length > 0) {
         score += 20;
     }
 
@@ -78,7 +78,7 @@ function analyzePassword(password) {
         hasUppercase: resultmaj > 0,
         hasDigit: resultchiffre > 0,
         hasSymbol: resultsymbole > 0,
-        blacklistSafe: !listenoire.includes(password.toLowerCase()),
+        blacklistSafe: !listeNoire.includes(password.toLowerCase()),
         level: getPasswordLevel(boundedScore)
     };
 }

@@ -1,30 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CyberShield</title>
+    <title>Détecteur de phishing - CyberShield</title>
   <link rel="stylesheet" href="../style.css">
   </head>
   <body>
-      <section class="topbar">
-          <a class="topbar-button" href="../index.html">Dashboard</a>
-          <a class="topbar-button" href="./password.html">Analyseur mdp</a>
-          <a class="selected-topbar-button">Détecteur phishing</a>
-          <a class="topbar-button" href="./cipher.html">Cryptographie messages</a>
-          <a class="topbar-button" href="./quiz.html">Quiz interactif</a>
-      </section>
-      <h1>Détecteur d'e-mails phishing</h1>
-      <main class="container">
-         <div class="email-input-wrap">
-          <input type="email" id="emailinput" placeholder="Entrez le mail souhaité...">
-          <button type="button" id="analyzeBtn" class="eye-toggle" aria-label="Analyser l'email">🔍</button>
-        </div>
-        <input type="text" id="emailSubject" class="phishing-field" placeholder="Objet de l'email">
-        <textarea id="emailBody" class="phishing-field" rows="5" placeholder="Corps du message"></textarea>
-        <button type="button" id="resetBtn" class="reset-button" aria-label="Réinitialiser">↻ Réinitialiser</button>
-        <div id="resultsContainer" style="display: none;"></div>
-      </main>
+    <section class="topbar app-tabs-nav">
+      <a class="topbar-button" href="../index.html">Dashboard</a>
+      <a class="topbar-button" href="./password.html">Analyseur mot de passe</a>
+      <a class="selected-topbar-button">Détecteur phishing</a>
+      <a class="topbar-button" href="./cipher.html">Cryptographie messages</a>
+      <a class="topbar-button" href="./quiz.html">Quiz interactif</a>
+    </section>
+
+    <h1>Détecteur d'e-mails phishing</h1>
+    <main class="container">
+      <div class="email-input-wrap">
+        <input type="text" id="emailinput" placeholder="Expéditeur (ex: support@service.com)">
+        <button type="button" id="analyzeBtn" class="eye-toggle" aria-label="Analyser l'email">🔍</button>
+      </div>
+      <input type="text" id="emailSubject" class="phishing-field" placeholder="Objet de l'email">
+      <textarea id="emailBody" class="phishing-field" rows="5" placeholder="Corps du message"></textarea>
+      <button type="button" id="resetBtn" class="reset-button" aria-label="Réinitialiser">↻ Réinitialiser</button>
+      <div id="resultsContainer" style="display: none;"></div>
+    </main>
       <script src="../js/phishing.js"></script>
   </body>
 </html>

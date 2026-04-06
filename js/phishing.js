@@ -91,7 +91,7 @@ function initPhishingModule() {
         const body = bodyInput ? bodyInput.value.trim() : sender;
 
         if (!sender) {
-            resultsContainer.textContent = "Veuillez entrer un expediteur ou un email.";
+            resultsContainer.textContent = \"Veuillez entrer un expéditeur ou un email.\";
             resultsContainer.style.display = "block";
             resultsContainer.setAttribute("data-risk", "warning");
             return;

@@ -130,11 +130,11 @@ async function fetchNews() {
       }));
     } else {
       // Si la clé est invalide, utiliser les données de démonstration
-      console.log('API non disponible, utilisation des données de démonstration');
+      console.error('API non disponible, utilisation des données de démonstration');
       allNews = DEMO_NEWS;
     }
   } catch (error) {
-    console.log('Erreur réseau, utilisation des données de démonstration:', error);
+    console.error('Erreur réseau, utilisation des données de démonstration:', error);
     allNews = DEMO_NEWS;
   }
 
@@ -144,7 +144,7 @@ async function fetchNews() {
 
 // Calculer le niveau de sévérité d'un article
 function calculateSeverity(text) {
-  const text_lower = text.toLowerCase();
+  const textLower = text.toLowerCase();
   
   // Mots-clés pour les différents niveaux
   const severityKeywords = {
@@ -154,7 +154,7 @@ function calculateSeverity(text) {
   };
 
   for (const [severity, keywords] of Object.entries(severityKeywords)) {
-    if (keywords.some(keyword => text_lower.includes(keyword))) {
+    if (keywords.some(keyword => textLower.includes(keyword))) {
       return severity;
     }
   }
@@ -169,6 +169,7 @@ function setupFilters() {
   categories = ['Tous', ...severities.sort()];
 
   const filterButtons = document.getElementById('filterButtons');
+  if (!filterButtons) return;
   filterButtons.innerHTML = '';
 
   // Créer les boutons de filtre
