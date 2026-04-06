@@ -1,3 +1,9 @@
+const email = {
+    subject: "Remise de prêt",
+    from: "paypa1.com",
+    body: "Bonjour, je vous informe que le prêt à été accepté ! Félicitations. Pour vous connecter à votre compte paypal, cliquez ici."
+}
+
 function analyzeEmail(email) {
     let score = 0;
     let reasons = [];

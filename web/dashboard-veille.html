@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard de Veille - CyberShield</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <section class="topbar">
+      <a class="topbar-button" href="../index.html">Dashboard Principal</a>
+      <a class="topbar-button" href="./password.html">Analyseur mdp</a>
+      <a class="topbar-button" href="./phishing.html">Détecteur phishing</a>
+      <a class="topbar-button" href="./cipher.html">Cryptographie</a>
+      <a class="topbar-button" href="./quiz.html">Quiz</a>
+    </section>
+
+    <h1>📊 Dashboard de Veille Cybersécurité</h1>
+
+    <main class="container">
+      <!-- Section Indicateur d'Alerte -->
+      <div class="alert-section">
+        <h2>Niveau d'Alerte Actuel</h2>
+        <div class="alert-indicator" id="alertIndicator">
+          <div class="alert-level" id="alertLevel">--</div>
+          <div class="alert-details">
+            <p id="alertMessage">Chargement des données...</p>
+            <p id="alertCount"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Filtres -->
+      <div class="filters-section">
+        <h2>Filtrer les Actualités</h2>
+        <div class="filter-buttons" id="filterButtons">
+          <!-- Les filtres seront générés dynamiquement -->
+        </div>
+      </div>
+
+      <!-- Section Actualités -->
+      <div class="news-section">
+        <h2>10 Dernières Actualités</h2>
+        <div class="news-container" id="newsContainer">
+          <p class="loading">Chargement des actualités...</p>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>
