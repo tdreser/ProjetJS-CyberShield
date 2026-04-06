@@ -30,17 +30,33 @@ function initTabs() {
 	const panels = Array.from(document.querySelectorAll(".app-tab-panel"));
 	if (buttons.length === 0 || panels.length === 0) return;
 
+	const openTab = (tab) => {
+		buttons.forEach((btn) => btn.classList.remove("active"));
+		const activeButton = buttons.find((btn) => btn.getAttribute("data-tab") === tab);
+		if (activeButton) activeButton.classList.add("active");
+
+		panels.forEach((panel) => {
+			panel.classList.toggle("active", panel.id === `tab-${tab}`);
+		});
+
+		if (tab === "home") {
+			renderHomeKPIs();
+		}
+	};
+
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
 			const tab = button.getAttribute("data-tab");
-			buttons.forEach((btn) => btn.classList.remove("active"));
-			button.classList.add("active");
-			panels.forEach((panel) => {
-				panel.classList.toggle("active", panel.id === `tab-${tab}`);
-			});
-			if (tab === "home") {
-				renderHomeKPIs();
-			}
+			openTab(tab);
+		});
+	});
+
+	document.querySelectorAll("[data-open-tab]").forEach((trigger) => {
+		trigger.addEventListener("click", () => {
+			const tab = trigger.getAttribute("data-open-tab");
+			if (!tab) return;
+			openTab(tab);
+			window.scrollTo({ top: 0, behavior: "smooth" });
 		});
 	});
 }

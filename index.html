@@ -25,6 +25,13 @@
                     <div class="dashboard-card">
                         <h3>Vue synthese de securite</h3>
                         <p>Retrouvez en un coup d'oeil votre progression et votre niveau d'exposition.</p>
+                        <div class="home-quick-actions">
+                            <button class="quick-action-btn" data-open-tab="password">Tester un mot de passe</button>
+                            <button class="quick-action-btn" data-open-tab="phishing">Analyser un email</button>
+                            <button class="quick-action-btn" data-open-tab="quiz">Lancer le quiz</button>
+                            <button class="quick-action-btn" data-open-tab="watch">Consulter la veille</button>
+                            <button class="quick-action-btn" data-open-tab="report">Generer mon rapport</button>
+                        </div>
                     </div>
 
                     <div class="kpi-grid">
@@ -52,6 +59,29 @@
                         <div class="mini-news-list" id="miniNewsList">
                             <p>Aucune actualite en cache. Ouvrez le module veille pour synchroniser les donnees.</p>
                         </div>
+                    </div>
+
+                    <div class="home-module-grid">
+                        <article class="home-module-card">
+                            <h3>Mots de passe</h3>
+                            <p>Evaluation instantanee avec score et recommandations.</p>
+                            <button class="topbar-button" data-open-tab="password">Ouvrir le module</button>
+                        </article>
+                        <article class="home-module-card">
+                            <h3>Phishing</h3>
+                            <p>Analyse expediteur, objet et corps du message.</p>
+                            <button class="topbar-button" data-open-tab="phishing">Ouvrir le module</button>
+                        </article>
+                        <article class="home-module-card">
+                            <h3>Cryptographie</h3>
+                            <p>Cesar complet avec tentative de force brute.</p>
+                            <button class="topbar-button" data-open-tab="cipher">Ouvrir le module</button>
+                        </article>
+                        <article class="home-module-card">
+                            <h3>Quiz</h3>
+                            <p>Questions progressives avec timer, streak et top 5.</p>
+                            <button class="topbar-button" data-open-tab="quiz">Ouvrir le module</button>
+                        </article>
                     </div>
                 </section>
 
