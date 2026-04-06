@@ -20,55 +20,11 @@
           <input type="email" id="emailinput" placeholder="Entrez le mail souhaité...">
           <button type="button" id="analyzeBtn" class="eye-toggle" aria-label="Analyser l'email">🔍</button>
         </div>
+        <input type="text" id="emailSubject" class="phishing-field" placeholder="Objet de l'email">
+        <textarea id="emailBody" class="phishing-field" rows="5" placeholder="Corps du message"></textarea>
         <button type="button" id="resetBtn" class="reset-button" aria-label="Réinitialiser">↻ Réinitialiser</button>
         <div id="resultsContainer" style="display: none;"></div>
       </main>
       <script src="../js/phishing.js"></script>
-      <script>
-        document.getElementById('analyzeBtn').addEventListener('click', function() {
-          const emailInput = document.getElementById('emailinput').value.trim();
-          const resultsContainer = document.getElementById('resultsContainer');
-          
-          if (!emailInput) {
-            resultsContainer.textContent = 'Veuillez entrer une adresse email.';
-            resultsContainer.style.display = 'block';
-            resultsContainer.setAttribute('data-risk', 'warning');
-            return;
-          }
-
-          const emailObject = {
-            from: emailInput,
-            subject: '',
-            body: emailInput
-          };
-
-          const result = analyzeEmail(emailObject);
-          
-          let resultsHTML = `<h3>Score de détection: ${result.score}%</h3>`;
-          resultsHTML += '<ul>';
-          result.reasons.forEach(reason => {
-            resultsHTML += `<li>${reason}</li>`;
-          });
-          resultsHTML += '</ul>';
-          
-          resultsContainer.innerHTML = resultsHTML;
-          resultsContainer.style.display = 'block';
-          
-          let riskLevel = 'safe';
-          if (result.score >= 70) {
-            riskLevel = 'danger';
-          } else if (result.score >= 40) {
-            riskLevel = 'warning';
-          }
-          resultsContainer.setAttribute('data-risk', riskLevel);
-        });
-
-        document.getElementById('resetBtn').addEventListener('click', function() {
-          document.getElementById('emailinput').value = '';
-          document.getElementById('resultsContainer').style.display = 'none';
-          document.getElementById('resultsContainer').innerHTML = '';
-          document.getElementById('emailinput').focus();
-        });
-      </script>
   </body>
 </html>

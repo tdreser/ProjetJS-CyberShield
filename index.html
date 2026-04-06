@@ -7,36 +7,205 @@
   <link rel="stylesheet" href="style.css">
   </head>
   <body>
-      <h1>Bienvenue dans CyberShield</h1>
-      <main class="container">
-        <div class="dashboard-card">
-            <h3>📊 Dashboard de Veille</h3>
-            <a class="topbar-button" href="web/dashboard-veille.html">Accédez au dashboard →</a>
-        </div>
-        <row>
-            <div class="card">
-                <h3>Analyseur de mot de passe</h3>
-                <p>Vérifiez si votre prochain mot de passe est suffisamment fort pour résister aux attaques courantes.</p>
-                <a class="topbar-button" href="web/password.html">Go →</a>
-            </div>
-            <div class="card">
-                <h3>Détecteur d'e-mails phishing</h3>
-                <p>Vérifiez si vos e-mails sont suspects et protégez-vous contre les attaques de type phishing.</p>
-                <a class="topbar-button " href="web/phishing.html">Go →</a>
-            </div>
-        </row>
-        <row>
-            <div class="card">
-                <h3>Quiz interactif de sensibilisation</h3>
-                <p>Testez vos connaissances en matière de cybersécurité.</p>
-                <a class="topbar-button" href="web/quiz.html">Go →</a>
-            </div>
-            <div class="card">
-                <h3>Cryptographie des messages</h3>
-                <p>Apprenez à chiffrer et déchiffrer vos messages de manière sécurisée.</p>
-                <a class="topbar-button" href="web/cipher.html">Go →</a>
-            </div>
-        </row>
-      </main>
+            <section class="topbar app-tabs-nav">
+                    <button class="app-tab-button active" data-tab="home">Accueil global</button>
+          <button class="app-tab-button" data-tab="password">Mots de passe</button>
+          <button class="app-tab-button" data-tab="phishing">Phishing</button>
+          <button class="app-tab-button" data-tab="cipher">Cryptographie</button>
+          <button class="app-tab-button" data-tab="quiz">Quiz</button>
+          <button class="app-tab-button" data-tab="watch">Veille cyber</button>
+          <button class="app-tab-button" data-tab="report">Rapport</button>
+            </section>
+
+            <h1>Bienvenue dans CyberShield</h1>
+            <p class="home-intro">Vous souhaitez tester votre robustesse en cybersécurité ? Découvrez nos outils pour évaluer vos mots de passe, repérer le phishing et renforcer vos réflexes de protection.</p>
+
+            <main class="container">
+                <section class="app-tab-panel active" id="tab-home">
+                    <div class="dashboard-card">
+                        <h3>Vue synthese de securite</h3>
+                        <p>Retrouvez en un coup d'oeil votre progression et votre niveau d'exposition.</p>
+                    </div>
+
+                    <div class="kpi-grid">
+                        <article class="kpi-card">
+                            <p class="kpi-label">Score moyen quiz</p>
+                            <p class="kpi-value" id="kpiQuizAverage">--</p>
+                            <p class="kpi-help" id="kpiQuizTop">Top 5 non disponible</p>
+                        </article>
+
+                        <article class="kpi-card">
+                            <p class="kpi-label">Dernier mot de passe</p>
+                            <p class="kpi-value" id="kpiPasswordScore">--</p>
+                            <p class="kpi-help" id="kpiPasswordLevel">Aucune analyse enregistree</p>
+                        </article>
+
+                        <article class="kpi-card">
+                            <p class="kpi-label">Emails analyses</p>
+                            <p class="kpi-value" id="kpiPhishingCount">0</p>
+                            <p class="kpi-help" id="kpiPhishingRate">Taux de phishing: 0%</p>
+                        </article>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Dernieres actualites cybers</h3>
+                        <div class="mini-news-list" id="miniNewsList">
+                            <p>Aucune actualite en cache. Ouvrez le module veille pour synchroniser les donnees.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="app-tab-panel" id="tab-password">
+                    <h2>Analyseur de robustesse</h2>
+                    <div class="password-input-wrap">
+                        <input type="password" id="passwordInput" placeholder="Entrez votre mot de passe...">
+                        <button type="button" id="togglePassword" class="eye-toggle" aria-label="Afficher le mot de passe">👁</button>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="scoreFill"></div>
+                    </div>
+                    <div class="criteres">Criteres :
+                        <p>Longueur suffisante (8+ caracteres)</p>
+                        <p>Majuscules presentes</p>
+                        <p>Chiffres presents</p>
+                        <p>Symboles presents</p>
+                        <p>Pas dans la liste noire</p>
+                    </div>
+                    <p>Score : <span id="scoreValue">0</span>/100</p>
+                </section>
+
+                <section class="app-tab-panel" id="tab-phishing">
+                    <h2>Detecteur d'emails phishing</h2>
+                    <div class="email-input-wrap">
+                        <input type="text" id="emailinput" placeholder="Expediteur (ex: support@service.com)">
+                        <button type="button" id="analyzeBtn" class="eye-toggle" aria-label="Analyser l'email">🔍</button>
+                    </div>
+                    <input type="text" id="emailSubject" class="phishing-field" placeholder="Objet de l'email">
+                    <textarea id="emailBody" class="phishing-field" rows="5" placeholder="Corps du message"></textarea>
+                    <button type="button" id="resetBtn" class="reset-button" aria-label="Reinitialiser">↻ Reinitialiser</button>
+                    <div id="resultsContainer" style="display: none;"></div>
+                </section>
+
+                <section class="app-tab-panel" id="tab-cipher">
+                    <h2>Chiffrement Cesar</h2>
+                    <section class="cipher-panel">
+                        <label class="cipher-label" for="caesarMessage">Message</label>
+                        <textarea id="caesarMessage" rows="4" class="cipher-input"></textarea>
+
+                        <label class="cipher-label" for="caesarShift">Decalage (1-25)</label>
+                        <input id="caesarShift" type="number" min="1" max="25" value="3" class="cipher-number-input">
+
+                        <div class="cipher-actions">
+                            <button id="caesarEncryptBtn" type="button">Chiffrer</button>
+                            <button id="caesarDecryptBtn" type="button">Dechiffrer</button>
+                            <button id="caesarBruteForceBtn" type="button">Force brute</button>
+                        </div>
+
+                        <p class="cipher-label">Resultat</p>
+                        <pre id="caesarResult" class="cipher-result"></pre>
+
+                        <h3>25 tentatives de dechiffrement</h3>
+                        <div class="cipher-table-wrap">
+                            <table class="cipher-table">
+                                <thead>
+                                    <tr>
+                                        <th>Decalage</th>
+                                        <th>Texte</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="caesarBruteForceBody"></tbody>
+                            </table>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="app-tab-panel" id="tab-quiz">
+                    <h2>Quiz interactif de sensibilisation</h2>
+                    <div class="game" id="game">
+                        <form action="#" id="endForm">
+                            <button type="submit">Quitter</button>
+                        </form>
+                    </div>
+                    <div class="welcome-quiz" id="welcome-quiz">
+                        <form action="#" id="startForm">
+                            <fieldset>
+                                <legend>Selectionnez une difficulte :</legend>
+
+                                <div>
+                                    <input type="radio" id="easy" name="difficulty" value="easy" checked>
+                                    <label for="easy">Easy</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="medium" name="difficulty" value="medium">
+                                    <label for="medium">Medium</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="hard" name="difficulty" value="hard">
+                                    <label for="hard">Hard</label>
+                                </div>
+                            </fieldset>
+
+                            <button type="submit">Commencer le quiz</button>
+                        </form>
+                    </div>
+                </section>
+
+                <section class="app-tab-panel" id="tab-watch">
+                    <div class="alert-section">
+                        <h2>Niveau d'alerte actuel</h2>
+                        <div class="alert-indicator" id="alertIndicator">
+                            <div class="alert-level" id="alertLevel">--</div>
+                            <div class="alert-details">
+                                <p id="alertMessage">Chargement des donnees...</p>
+                                <p id="alertCount"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filters-section">
+                        <h2>Filtrer les actualites</h2>
+                        <div class="filter-buttons" id="filterButtons"></div>
+                    </div>
+
+                    <div class="news-section">
+                        <h2>Fil d'actualites</h2>
+                        <div class="news-container" id="newsContainer"></div>
+                    </div>
+
+                    <a class="topbar-button" href="web/dashboard-veille.html">Ouvrir la vue detaillee de veille</a>
+                </section>
+
+                <section class="app-tab-panel" id="tab-report">
+                    <div class="dashboard-card">
+                        <h3>Rapport de securite personnalise</h3>
+                        <p>Generez une synthese complete de vos interactions pour la soutenance ou l'export.</p>
+                        <div class="cipher-actions">
+                            <button id="generateReportBtn" type="button">Generer le rapport</button>
+                            <button id="downloadReportBtn" type="button">Exporter JSON</button>
+                            <button id="printReportBtn" type="button">Imprimer</button>
+                        </div>
+                        <pre id="reportPreview" class="cipher-result">Cliquez sur "Generer le rapport" pour afficher la synthese.</pre>
+                    </div>
+
+                    <div class="report-modal" id="reportModal" aria-hidden="true">
+                        <div class="report-modal-card">
+                            <div class="report-modal-head">
+                                <h3>Apercu du rapport</h3>
+                                <button id="closeReportModal" type="button">Fermer</button>
+                            </div>
+                            <pre id="reportModalContent" class="cipher-result"></pre>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <script src="js/password.js"></script>
+            <script src="js/phishing.js"></script>
+            <script src="js/cipher.js"></script>
+            <script src="js/dashboard.js"></script>
+            <script type="module" src="js/quiz.js"></script>
+            <script src="js/app.js"></script>
   </body>
 </html>

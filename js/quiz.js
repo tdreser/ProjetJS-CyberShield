@@ -42,7 +42,14 @@ function showQuestion() {
         return;
     }
 
-    const question = currentQuestions[currentQuestionIndex];
+    const selectedQuestion = currentQuestions[currentQuestionIndex];
+    const question = currentQuestions.find((item) => item.id === selectedQuestion.id);
+
+    if (!question) {
+        currentQuestionIndex++;
+        showQuestion();
+        return;
+    }
 
     const header = document.createElement("div");
 

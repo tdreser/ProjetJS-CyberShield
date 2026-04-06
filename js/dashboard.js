@@ -9,6 +9,14 @@ let filteredNews = [];
 let categories = [];
 let activeFilter = 'Tous';
 
+function cacheNews(articles) {
+  const payload = {
+    updatedAt: new Date().toISOString(),
+    articles: articles
+  };
+  localStorage.setItem('cybershield.news.cache', JSON.stringify(payload));
+}
+
 // Données locales de démonstration si l'API ne fonctionne pas
 const DEMO_NEWS = [
   {
@@ -131,6 +139,7 @@ async function fetchNews() {
   }
 
   filteredNews = [...allNews];
+  cacheNews(allNews);
 }
 
 // Calculer le niveau de sévérité d'un article
